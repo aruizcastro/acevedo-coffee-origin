@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu lote · Café de Acevedo, Huila</title>
+  <meta name="description" content="Ficha de trazabilidad del lote: variedad, proceso, secado, puntaje y tueste. Lot traceability sheet: variety, process, drying, score and roast.">
+  <meta name="theme-color" content="#21150d">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- Picks the language before first paint: ?lang=en|es, then saved choice, then browser language -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      var param = new URLSearchParams(location.search).get('lang');
+      var browser = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+      var lang = param || saved || browser;
+      document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="lot-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" data-f="brand">[PENDIENTE]</a>
+    <div class="lang-switch" role="group" aria-label="Idioma / Language">
+      <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main id="main" class="lot-main wrap">
+    <a class="back-link mono" href="index.html#traceability">
+      ← <span lang="es">Todos los lotes</span><span lang="en">All lots</span>
+    </a>
+
+    <div id="lot" aria-live="polite">
+      <p class="mono muted"><span lang="es">Buscando tu lote…</span><span lang="en">Looking up your lot…</span></p>
+      <noscript>
+        <p>Esta página necesita JavaScript para mostrar los datos del lote. / This page needs JavaScript to show the lot details.</p>
+      </noscript>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-brand" data-f="brand">[PENDIENTE]</p>
+      <p class="muted">
+        <span lang="es">Café de origen · Acevedo, Huila, Colombia</span>
+        <span lang="en">Single-origin coffee · Acevedo, Huila, Colombia</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" crossorigin="anonymous" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/lot.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "_note": "Brand and farm details. Replace every [PENDIENTE: ...] with the real value. Any value that still starts with [PENDIENTE is highlighted on the site so it is not forgotten. Text fields accept either a plain string (shown in both languages) or an object {\"es\": \"...\", \"en\": \"...\"}.",
+
+  "brand": "[PENDIENTE: nombre de la marca]",
+  "tagline": {
+    "es": "Café de especialidad con origen trazable en las montañas de Acevedo, Huila.",
+    "en": "Specialty coffee with traceable origin from the mountains of Acevedo, Huila."
+  },
+  "site_url": "[PENDIENTE: https://USER.github.io/REPOSITORY]",
+
+  "farm": {
+    "name": "[PENDIENTE: nombre de la finca]",
+    "vereda": "[PENDIENTE: vereda]",
+    "altitude_masl": "[PENDIENTE]",
+    "coordinates": { "lat": null, "lon": null },
+    "coffee_area_ha": "[PENDIENTE]",
+    "varieties": ["[PENDIENTE: variedades]"],
+    "shade_and_practices": "[PENDIENTE: árboles de sombrío y prácticas sostenibles]",
+    "certifications": "[PENDIENTE: certificaciones, si las hay]"
+  },
+
+  "producers": {
+    "names": "[PENDIENTE: nombres de los productores]",
+    "story": "[PENDIENTE: historia breve — años en el café, generación, cómo empezó la finca]"
+  },
+
+  "contact": {
+    "whatsapp": "[PENDIENTE: número con indicativo, ej. +57 300 000 0000]",
+    "instagram": "[PENDIENTE: @usuario]",
+    "email": "[PENDIENTE: correo]",
+    "where_to_buy": ["[PENDIENTE: tiendas, cafés o enlace de compra]"]
+  }
+}

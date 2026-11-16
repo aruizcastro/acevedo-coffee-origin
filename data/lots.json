@@ -1,0 +1,54 @@
+{
+  "_note": "One object per lot. To add a harvest, copy a block, change the id (must be unique) and the data. Dates use YYYY-MM-DD. Text fields accept a plain string or {\"es\": \"...\", \"en\": \"...\"}. Lots with \"example\": true are fictional: delete them before going live.",
+
+  "lots": [
+    {
+      "id": "ACV-2026-001",
+      "example": true,
+      "name": { "es": "EJEMPLO · Lavado de la loma", "en": "EXAMPLE · Hillside washed" },
+      "harvest_date": "2026-05-18",
+      "variety": "Caturra",
+      "process": { "es": "Lavado", "en": "Washed" },
+      "fermentation_days": 1.5,
+      "drying": {
+        "method": { "es": "Marquesina solar en camas elevadas", "en": "Solar dryer on raised beds" },
+        "days": 14
+      },
+      "altitude_masl": 1650,
+      "sca_score": 86.5,
+      "tasting_notes": [
+        { "es": "Chocolate", "en": "Chocolate" },
+        { "es": "Frutos rojos", "en": "Red fruit" },
+        { "es": "Panela", "en": "Panela sugar" }
+      ],
+      "roast_date": "2026-07-02",
+      "roast_level": { "es": "Medio", "en": "Medium" },
+      "weight_g": 340,
+      "photos": ["img/lot-example-1.jpg"]
+    },
+    {
+      "id": "ACV-2026-002",
+      "example": true,
+      "name": { "es": "EJEMPLO · Honey de altura", "en": "EXAMPLE · High-altitude honey" },
+      "harvest_date": "2026-06-09",
+      "variety": { "es": "Bourbon Rosado", "en": "Pink Bourbon" },
+      "process": "Honey",
+      "fermentation_days": 3,
+      "drying": {
+        "method": { "es": "Camas africanas bajo sombra", "en": "Shaded African beds" },
+        "days": 21
+      },
+      "altitude_masl": 1720,
+      "sca_score": 87.25,
+      "tasting_notes": [
+        { "es": "Durazno", "en": "Peach" },
+        { "es": "Miel", "en": "Honey" },
+        { "es": "Flor de azahar", "en": "Orange blossom" }
+      ],
+      "roast_date": "2026-07-20",
+      "roast_level": { "es": "Medio claro", "en": "Medium-light" },
+      "weight_g": 250,
+      "photos": ["img/lot-example-2.jpg"]
+    }
+  ]
+}

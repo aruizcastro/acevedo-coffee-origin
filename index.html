@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Café de origen · Acevedo, Huila</title>
+  <meta name="description" content="Origen y trazabilidad de un café de especialidad cultivado en Acevedo, Huila (Colombia). Origin and traceability of a specialty coffee grown in Acevedo, Huila.">
+  <meta name="theme-color" content="#21150d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Café de origen · Acevedo, Huila">
+  <meta property="og:image" content="img/farm-hero.jpg">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- Picks the language before first paint: ?lang=en|es, then saved choice, then browser language -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      var param = new URLSearchParams(location.search).get('lang');
+      var browser = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+      var lang = param || saved || browser;
+      document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main"><span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span></a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" data-f="brand">[PENDIENTE]</a>
+    <nav id="nav" class="site-nav" aria-label="Principal">
+      <a href="#region"><span lang="es">La región</span><span lang="en">The region</span></a>
+      <a href="#farm"><span lang="es">La finca</span><span lang="en">The farm</span></a>
+      <a href="#process"><span lang="es">Proceso</span><span lang="en">Process</span></a>
+      <a href="#traceability"><span lang="es">Trazabilidad</span><span lang="en">Traceability</span></a>
+      <a href="#contact"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Idioma / Language">
+      <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="nav-toggle" aria-controls="nav" aria-expanded="false">
+      <span lang="es">Menú</span><span lang="en">Menu</span>
+    </button>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 1. HERO ============ -->
+    <section id="top" class="hero">
+      <img class="hero-photo" src="img/farm-hero.jpg" alt="" width="1600" height="1000" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-coords mono">Acevedo · Huila · Colombia <span class="sep">/</span> 1°49′N 75°53′W</p>
+        <h1 class="hero-title" data-f="brand">[PENDIENTE]</h1>
+        <p class="hero-tagline" data-f="tagline">Café de especialidad con origen trazable en las montañas de Acevedo, Huila.</p>
+        <a class="btn btn-cream" href="#traceability">
+          <span lang="es">Descubre tu lote</span><span lang="en">Discover your lot</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v15m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <dl class="hero-strip">
+        <div>
+          <dt><span lang="es">Finca</span><span lang="en">Farm</span></dt>
+          <dd data-f="farm.name">[PENDIENTE]</dd>
+        </div>
+        <div>
+          <dt><span lang="es">Vereda</span><span lang="en">Vereda</span></dt>
+          <dd data-f="farm.vereda">[PENDIENTE]</dd>
+        </div>
+        <div>
+          <dt><span lang="es">Altitud (msnm)</span><span lang="en">Altitude (masl)</span></dt>
+          <dd data-f="farm.altitude_masl">[PENDIENTE]</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============ 2. THE REGION ============ -->
+    <section id="region" class="section section-cream topo">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker mono">01 — <span lang="es">La región</span><span lang="en">The region</span></p>
+          <h2>Acevedo, <em>Huila</em></h2>
+          <p class="lead" lang="es">La «Capital Cafetera de Especialidad de Colombia»: un municipio de montaña al sur del Huila, en la vertiente occidental de la cordillera Oriental, donde nace el río Suaza.</p>
+          <p class="lead" lang="en">The “Specialty Coffee Capital of Colombia”: a mountain municipality in southern Huila, on the western slope of the Eastern Andes range, where the Suaza River is born.</p>
+        </header>
+
+        <ul class="stats reveal">
+          <li>
+            <strong><span lang="es">1.348</span><span lang="en">1,348</span></strong>
+            <span lang="es">msnm en el casco urbano</span><span lang="en">masl at the town center</span>
+          </li>
+          <li>
+            <strong>17–25 °C</strong>
+            <span lang="es">temperatura (≈20–22 °C en promedio)</span><span lang="en">temperature (≈20–22 °C on average)</span>
+          </li>
+          <li>
+            <strong>~700 km²</strong>
+            <span lang="es">de extensión</span><span lang="en">in area</span>
+          </li>
+          <li>
+            <strong><span lang="es">≈14.300 ha</span><span lang="en">≈14,300 ha</span></strong>
+            <span lang="es">sembradas en café (2026)</span><span lang="en">planted in coffee (2026)</span>
+          </li>
+        </ul>
+
+        <figure class="region-photo reveal">
+          <img src="img/region-acevedo.jpg" alt="" width="1600" height="900" loading="lazy">
+          <figcaption class="mono">
+            <span lang="es">Montañas cafeteras de Acevedo, sur del Huila</span>
+            <span lang="en">Coffee mountains of Acevedo, southern Huila</span>
+          </figcaption>
+        </figure>
+
+        <div class="region-grid">
+          <article class="reveal">
+            <h3><span lang="es">Geografía y ríos</span><span lang="en">Geography and rivers</span></h3>
+            <p lang="es">Acevedo limita al norte con Suaza; al sur con San José del Fragua (Caquetá) y Piamonte (Cauca); al oriente con Belén de los Andaquíes (Caquetá); y al occidente con Palestina y Timaná.</p>
+            <p lang="en">Acevedo borders Suaza to the north; San José del Fragua (Caquetá) and Piamonte (Cauca) to the south; Belén de los Andaquíes (Caquetá) to the east; and Palestina and Timaná to the west.</p>
+            <p lang="es">Aquí nace el río Suaza, afluente del Magdalena. También recorren el municipio las quebradas La Queso y Anayaco y el río Mandiyaco. La zona cafetera del Huila se extiende entre los 1.200 y los 2.000 msnm.</p>
+            <p lang="en">The Suaza River, a tributary of the Magdalena, rises here. The La Queso and Anayaco streams and the Mandiyaco River also cross the municipality. Huila’s coffee-growing zone lies between 1,200 and 2,000 masl.</p>
+          </article>
+
+          <article class="reveal">
+            <h3><span lang="es">Historia</span><span lang="en">History</span></h3>
+            <p lang="es">Sus primeros habitantes fueron los indígenas Andakí. La época colonial estuvo marcada por las misiones franciscanas, y en el siglo XIX fue ruta comercial durante la bonanza del caucho.</p>
+            <p lang="en">Its first inhabitants were the Andakí Indigenous people. The colonial era was shaped by Franciscan missions, and in the 19th century it was a trade route during the rubber boom.</p>
+            <ol class="years">
+              <li>
+                <span class="mono">1756</span>
+                <span lang="es">Fundación, el 6 de agosto, como San Francisco Javier de la Ceja de los Andaquíes; después, La Ceja de los Andakí.</span>
+                <span lang="en">Founded on August 6 as San Francisco Javier de la Ceja de los Andaquíes; later, La Ceja de los Andakí.</span>
+              </li>
+              <li>
+                <span class="mono">1898</span>
+                <span lang="es">Erigido municipio el 25 de junio, con el nombre de La Concepción.</span>
+                <span lang="en">Made a municipality on June 25, under the name La Concepción.</span>
+              </li>
+              <li>
+                <span class="mono">1935</span>
+                <span lang="es">Toma el nombre de Acevedo en honor a José Acevedo y Gómez, «El Tribuno del Pueblo».</span>
+                <span lang="en">Takes the name Acevedo in honor of José Acevedo y Gómez, “the People’s Tribune”.</span>
+              </li>
+            </ol>
+          </article>
+
+          <article class="reveal">
+            <h3><span lang="es">Naturaleza</span><span lang="en">Nature</span></h3>
+            <p lang="es">Acevedo alberga el Parque Nacional Natural Cueva de los Guácharos, la primera área protegida declarada en Colombia (1960) y hábitat del guácharo, un ave nocturna.</p>
+            <p lang="en">Acevedo is home to Cueva de los Guácharos National Natural Park, the first protected area declared in Colombia (1960) and habitat of the oilbird (guácharo), a nocturnal bird.</p>
+            <p lang="es">En la zona rural hay petroglifos, y el proyecto «Ruta del petroglifo, el café y la palma de iraca» los une con el paisaje cafetero.</p>
+            <p lang="en">There are petroglyphs in the rural area, and a project called “Ruta del petroglifo, el café y la palma de iraca” (Petroglyph, Coffee and Iraca Palm Route) links them with the coffee landscape.</p>
+          </article>
+
+          <article class="reveal">
+            <h3><span lang="es">El café de Acevedo</span><span lang="en">Acevedo’s coffee</span></h3>
+            <p lang="es">Junto con Pitalito, Acevedo es uno de los dos municipios con mayor producción de café del país. Su perfil de taza típico: notas de chocolate y frutos rojos, cuerpo medio y aroma intenso.</p>
+            <p lang="en">Together with Pitalito, Acevedo is one of the two largest coffee-producing municipalities in the country. Its typical cup profile: chocolate and red-fruit notes, medium body and intense aroma.</p>
+            <p lang="es">Caficultores acevedunos han ganado la Taza de la Excelencia; por ejemplo, la finca Las Flores en 2006.</p>
+            <p lang="en">Producers from Acevedo have won the Cup of Excellence — for example, Las Flores farm in 2006.</p>
+          </article>
+        </div>
+
+        <aside class="huila reveal">
+          <h3><span lang="es">Huila, primer productor de Colombia</span><span lang="en">Huila, Colombia’s top producer</span></h3>
+          <ul>
+            <li>
+              <strong>15</strong>
+              <span lang="es">años consecutivos como primer productor de café del país (19,65 % de la cosecha nacional en 2025).</span>
+              <span lang="en">consecutive years as the country’s top coffee producer (19.65% of the national harvest in 2025).</span>
+            </li>
+            <li>
+              <strong>1862</strong>
+              <span lang="es">inicio de la caficultura en el Huila. El Comité de Cafeteros del Huila se fundó en 1928.</span>
+              <span lang="en">when coffee growing began in Huila. The Huila Coffee Growers’ Committee was founded in 1928.</span>
+            </li>
+            <li>
+              <strong>97 %</strong>
+              <span lang="es">de los caficultores, aproximadamente, son pequeños productores (menos de 5 ha).</span>
+              <span lang="en">of growers, approximately, are smallholders (under 5 ha).</span>
+            </li>
+            <li>
+              <strong>D.O.</strong>
+              <span lang="es">Denominación de Origen Protegida «Café del Huila» desde 2013 (SIC, Resolución 17989).</span>
+              <span lang="en">Protected Designation of Origin “Café del Huila” since 2013 (SIC, Resolution 17989).</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ 3. THE FARM ============ -->
+    <section id="farm" class="section section-green">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker mono">02 — <span lang="es">La finca y la familia</span><span lang="en">The farm and the family</span></p>
+          <h2 data-f="farm.name">[PENDIENTE]</h2>
+          <p class="lead">
+            <span lang="es">Vereda</span><span lang="en">Vereda</span>
+            <span data-f="farm.vereda">[PENDIENTE]</span>, Acevedo, Huila
+          </p>
+        </header>
+
+        <div class="farm-layout">
+          <div class="farm-people reveal">
+            <figure class="portrait">
+              <img src="img/producer.jpg" alt="" width="900" height="1100" loading="lazy">
+            </figure>
+            <div class="farm-story">
+              <p class="mono label"><span lang="es">Quién lo cultiva</span><span lang="en">Who grows it</span></p>
+              <h3 data-f="producers.names">[PENDIENTE]</h3>
+              <p data-f="producers.story">[PENDIENTE]</p>
+            </div>
+          </div>
+
+          <div class="farm-facts reveal">
+            <figure class="farm-photo">
+              <img src="img/farm.jpg" alt="" width="1400" height="900" loading="lazy">
+            </figure>
+            <dl class="sheet">
+              <div>
+                <dt><span lang="es">Altitud (msnm)</span><span lang="en">Altitude (masl)</span></dt>
+                <dd data-f="farm.altitude_masl">[PENDIENTE]</dd>
+              </div>
+              <div>
+                <dt><span lang="es">Área en café (ha)</span><span lang="en">Area in coffee (ha)</span></dt>
+                <dd data-f="farm.coffee_area_ha">[PENDIENTE]</dd>
+              </div>
+              <div class="wide">
+                <dt><span lang="es">Variedades</span><span lang="en">Varieties</span></dt>
+                <dd data-f="farm.varieties">[PENDIENTE]</dd>
+              </div>
+              <div class="wide">
+                <dt><span lang="es">Sombrío y prácticas sostenibles</span><span lang="en">Shade trees and sustainable practices</span></dt>
+                <dd data-f="farm.shade_and_practices">[PENDIENTE]</dd>
+              </div>
+              <div class="wide">
+                <dt><span lang="es">Certificaciones</span><span lang="en">Certifications</span></dt>
+                <dd data-f="farm.certifications">[PENDIENTE]</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="map-block reveal">
+          <div class="map-head">
+            <h3><span lang="es">Dónde queda</span><span lang="en">Where it is</span></h3>
+            <p id="map-note" class="mono"></p>
+          </div>
+          <div id="map" class="map" role="img" aria-label="Mapa / Map"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. PROCESS ============ -->
+    <section id="process" class="section section-parchment">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker mono">03 — <span lang="es">Del cultivo a la taza</span><span lang="en">From crop to cup</span></p>
+          <h2><span lang="es">Seis pasos, <em>un solo origen</em></span><span lang="en">Six steps, <em>a single origin</em></span></h2>
+          <p class="lead" lang="es">Así viaja el café desde el árbol hasta tu empaque. Los datos exactos de cada cosecha —días de fermentación, secado, tueste— están en la ficha de tu lote.</p>
+          <p class="lead" lang="en">This is how the coffee travels from the tree to your bag. The exact figures for each harvest — fermentation days, drying, roast — are on your lot’s sheet.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3><span lang="es">Recolección selectiva</span><span lang="en">Selective picking</span></h3>
+            <p lang="es">Solo cerezas maduras, cosechadas a mano en varios pases por el mismo árbol.</p>
+            <p lang="en">Only ripe cherries, hand-picked over several passes of the same tree.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3><span lang="es">Beneficio húmedo</span><span lang="en">Wet milling</span></h3>
+            <p lang="es">Las cerezas se clasifican por flotación y se despulpan para separar la cáscara del grano.</p>
+            <p lang="en">Cherries are sorted by flotation and depulped to separate the skin from the bean.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3><span lang="es">Fermentación</span><span lang="en">Fermentation</span></h3>
+            <p lang="es">El grano reposa mientras el mucílago se transforma. El tiempo se define lote a lote y marca el carácter de la taza.</p>
+            <p lang="en">The beans rest while the mucilage breaks down. The time is set lot by lot and shapes the character of the cup.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3><span lang="es">Secado</span><span lang="en">Drying</span></h3>
+            <p lang="es">Secado lento al sol, moviendo el café con frecuencia hasta alcanzar la humedad justa.</p>
+            <p lang="en">Slow sun-drying, turning the coffee often until it reaches the right moisture.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">05</span>
+            <h3><span lang="es">Trilla</span><span lang="en">Hulling</span></h3>
+            <p lang="es">Se retira el pergamino y el grano verde se selecciona por tamaño y defectos.</p>
+            <p lang="en">The parchment is removed and the green beans are sorted by size and defects.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-num" aria-hidden="true">06</span>
+            <h3><span lang="es">Tueste</span><span lang="en">Roasting</span></h3>
+            <p lang="es">Tandas pequeñas, con un perfil pensado para resaltar las notas de cada lote.</p>
+            <p lang="en">Small batches, with a profile designed to bring out each lot’s notes.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 5. TRACEABILITY ============ -->
+    <section id="traceability" class="section section-cream topo">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker mono">04 — <span lang="es">Trazabilidad</span><span lang="en">Traceability</span></p>
+          <h2><span lang="es">Encuentra <em>tu lote</em></span><span lang="en">Find <em>your lot</em></span></h2>
+          <p class="lead" lang="es">El código está impreso en tu empaque, junto al QR. Escríbelo aquí o elige un lote de la lista.</p>
+          <p class="lead" lang="en">The code is printed on your bag, next to the QR. Type it here or pick a lot from the list.</p>
+        </header>
+
+        <form id="lot-search" class="lot-search reveal" action="lot.html" method="get">
+          <label for="lot-id" class="mono"><span lang="es">Código del lote</span><span lang="en">Lot code</span></label>
+          <div class="lot-search-row">
+            <input id="lot-id" name="id" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ACV-2026-001" required>
+            <button class="btn btn-dark" type="submit"><span lang="es">Ver lote</span><span lang="en">View lot</span></button>
+          </div>
+        </form>
+
+        <div id="lot-list" class="lot-list" aria-live="polite">
+          <p class="mono muted"><span lang="es">Cargando lotes…</span><span lang="en">Loading lots…</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. CONTACT ============ -->
+    <section id="contact" class="section section-coffee">
+      <div class="wrap contact-layout">
+        <header class="section-head reveal">
+          <p class="kicker mono">05 — <span lang="es">Contacto</span><span lang="en">Contact</span></p>
+          <h2><span lang="es">Dónde <em>comprar</em></span><span lang="en">Where <em>to buy</em></span></h2>
+          <p class="lead" lang="es">Escríbenos para pedidos, visitas a la finca o ventas al por mayor.</p>
+          <p class="lead" lang="en">Write to us for orders, farm visits or wholesale.</p>
+        </header>
+        <div class="contact-cards reveal">
+          <dl id="contact-list" class="contact-list">
+            <div><dt class="mono">WhatsApp</dt><dd data-f="contact.whatsapp">[PENDIENTE]</dd></div>
+            <div><dt class="mono">Instagram</dt><dd data-f="contact.instagram">[PENDIENTE]</dd></div>
+            <div><dt class="mono"><span lang="es">Correo</span><span lang="en">Email</span></dt><dd data-f="contact.email">[PENDIENTE]</dd></div>
+            <div><dt class="mono"><span lang="es">Puntos de venta</span><span lang="en">Where to buy</span></dt><dd data-f="contact.where_to_buy">[PENDIENTE]</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-brand" data-f="brand">[PENDIENTE]</p>
+        <p class="muted">Acevedo, Huila, Colombia</p>
+      </div>
+      <div>
+        <h2 class="mono"><span lang="es">Fuentes</span><span lang="en">Sources</span></h2>
+        <ul class="sources">
+          <li><a href="https://www.portafolio.co/" target="_blank" rel="noopener">Portafolio</a></li>
+          <li><a href="https://federaciondecafeteros.org/" target="_blank" rel="noopener">Federación Nacional de Cafeteros</a></li>
+          <li><a href="https://huila.federaciondecafeteros.org/" target="_blank" rel="noopener">Comité de Cafeteros del Huila</a></li>
+          <li><a href="https://www.parquesnacionales.gov.co/" target="_blank" rel="noopener">Parques Nacionales Naturales de Colombia</a></li>
+          <li><a href="https://www.cenicafe.org/" target="_blank" rel="noopener">Cenicafé</a></li>
+          <li><a href="https://www.agronegocios.co/" target="_blank" rel="noopener">Agronegocios</a></li>
+        </ul>
+      </div>
+      <p class="footer-note muted">
+        <span lang="es">Mapa: © colaboradores de OpenStreetMap. La ubicación de la finca es aproximada.</span>
+        <span lang="en">Map: © OpenStreetMap contributors. The farm location is approximate.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>

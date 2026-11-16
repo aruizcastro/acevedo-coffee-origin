@@ -1,0 +1,13 @@
+{
+  "name": "acevedo-coffee-origin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Origin and traceability site for a specialty coffee from Acevedo, Huila (Colombia). The site itself is plain HTML/CSS/JS; Node is only used to generate printable QR codes.",
+  "scripts": {
+    "qr": "node scripts/generate-qr.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
